@@ -1,6 +1,5 @@
 function askUserName () {
     let userName = prompt("Please enter your name", "");
-    let text;
 
     if (userName == "") {
         alert("User name cannot be empty. Please, enter your name here.");
