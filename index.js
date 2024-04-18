@@ -127,12 +127,13 @@ function menu() {
             break;
         case 5:
             alert("Goodbye!");
-            return;
+            break;
         default:
             alert("Invalid input, please choose between 1 - 5");
-            menu();
-            break;
+            return menu();
     }
+
+    return choice;
 }
 // switch was preferred as a way of managing complex conditional statements.
 
@@ -155,8 +156,15 @@ taskManager.tasks.push({
 let userName = askUserName();
 console.log(userName);
 
-menu();
 
 //run menu
 //rerun menu until user provides a exit command
+
+while (userName) {
+    let choice = menu();
+    console.log(choice)
+    if(choice === 5)
+        break;
+}
+
 
