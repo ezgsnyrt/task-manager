@@ -1,18 +1,26 @@
-function askUserName () {
-    let userName = prompt("Please enter your name", "");
 
-    if (userName == "") {
+// check if userName empty
+// then run askUserName method
+// fetch userName provided by the user and assign it to userName variable
+
+function askUserName () {
+    let userName = prompt("Please enter your name");
+
+    if (userName == "" || userName == null) {
         alert("User name cannot be empty. Please, enter your name here.");
+        return askUserName();
     } else if (userName.length < 2) {
         alert("Your name should contain at least 2 letters.");
+        return askUserName();
     } else if  (/\d+/.test(userName)) {
         // /\d+/ regular expression was used to check numbers in the string
         alert("Please, enter a valid name. A valid name should only contain letters.")
+        return askUserName();
     } else {
         alert(`Welcome ${userName}!`);
+        return userName;
     }
 }
-askUserName ();
 
 let taskId = 1;
 
@@ -100,12 +108,7 @@ const taskManager = {
 function menu() {
     const choice = parseInt(
         prompt(
-            `Select a choice:
-1) Add task
-2) Complete task
-3) List all tasks
-4) List completed tasks
-5) Exit`
+            `Select a choice:\n1) Add task\n2) Complete task\n3) List all tasks\n4) List completed tasks\n5) Exit`
         )
     );
 
@@ -148,4 +151,12 @@ taskManager.tasks.push({
     description: "study javascript",
     completed: false,
 });
-// menu();
+
+let userName = askUserName();
+console.log(userName);
+
+menu();
+
+//run menu
+//rerun menu until user provides a exit command
+
